@@ -1,0 +1,5 @@
+git init
+git remote add origin https://github.com/AounHaider133/CSC305_Computer_Graphics_Lab.git
+git config --global core.autocrlf true
+git commit -m "Initial Files of OpenGL uploaded"
+git push origin master
