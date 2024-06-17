@@ -1,45 +1,55 @@
 #include<GL/glut.h>
+#include<stdlib.h>
 
 void init()
 {
     glClearColor(1.0,1.0,1.0,1.0);
-    //gluOrtho2D(0.0,200.0,0.0,150.0);
-    //gluOrtho2D(0.0,200.0*2,0.0,150.0);
-    //gluOrtho2D(0.0,200.0,0.0,150.0*2);
+    glColor3f(1.0,0.0,0.0);
 
-    //gluOrtho2D(-100.0,100.0,-75,75);
-    //gluOrtho2D(-100.0*2,100.0*2,-75.0,75.0);
-    //gluOrtho2D(-100.0,100.0,-75.0,75.0*2);
-    //gluOrtho2D(1.0,0.0,-1.0,1.0);
-    glColor3d(0.0,1.0,0.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0,50.0,0.0,50.0);
+    glMatrixMode(GL_MODELVIEW);
 }
+
 void display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    GLfloat vertices[3][2] = {{0.0,0.0},{25.0,50.0},{50.0,0.0}};
+    int j,k;
+    int rand();
+    glPointSize(3);
+    GLfloat p[2] = {7.5,5.0};
 
-    glBegin(GL_POLYGON);
-    glVertex2d(0,-25);
-    glVertex2d(50,-25);
-    glVertex2d(50,25);
-    glVertex2d(0,25);
+    glClear(GL_COLOR_BUFFER_BIT); //clear window
+    glBegin(GL_POINTS);
+    //compute and plot 5000 points
+    for(k = 0; k<5000; k++)
+    {
+        j = rand()%3; //pick a vertex at random
+        //compute point halfway b/w selected vertex and old point
+        p[0] = (p[0]+vertices[j][0])/2.0;
+        p[1] = (p[1]+vertices[j][1])/2.0;
+
+        //plot new points
+        glVertex2fv(p);
+    }
     glEnd();
-
-    glFlush();
+    glFlush(); //clear buffers
 }
 
-void reshape(int width,int height)
-{
-    glViewport(0,0,width,height);
-}
 int main(int argc,char** argv)
 {
     glutInit(&argc,argv);
-    glutInitWindowSize(400,300);
-    glutCreateWindow("Half Triangle");
-    glutReshapeFunc(reshape);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+
+    glutInitWindowSize(400,400);
+    glutInitWindowPosition(600,200);
+
+    glutCreateWindow("Sierpinski Gasket");
     glutDisplayFunc(display);
 
     init();
-    glutMainLoop();
-}
 
+    glutMainLoop();
+    return 0;
+}

@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1718638879 source:e:\opengl_lab\texture_mapping\imageloader.cpp
+	<assert.h>
+	<fstream>
+	"imageloader.h"
+
+1718640647 e:\opengl_lab\texture_mapping\imageloader.h
+
+1718640683 source:e:\opengl_lab\texture_mapping\main.cpp
+	<iostream>
+	<stdlib.h>
+	<GL/glut.h>
+	"imageloader.h"
+
+1426331728 i:\code_blocks\codeblocks\mingw\include\gl\glut.h
+	"freeglut_std.h"
+
+1426331728 i:\code_blocks\codeblocks\mingw\include\gl\freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
